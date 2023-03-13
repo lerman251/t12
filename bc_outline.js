@@ -61,15 +61,21 @@ function createList(source, outlineList) {
                 n.setAttribute("id", "head" + headNum);
             }
             var listElem = document.createElement("li");
-            listElem.innerHTML = n.firstChild.nodeValue;
+
+            var linkElem = document.createElement("a");
+            linkElem.innerHTML = n.innerHTML;
+            linkElem.setAttribute("href", "#" + n.id);
+
+            listElem.appendChild(linkElem);
+
             if (headLevel === prevLevel) {
                 outlineList.appendChild(listElem);
-            }  else if (headLevel > prevLevel) {
+            } else if (headLevel > prevLevel) {
                 var nestedList = document.createElement("ol");
                 nestedList.appendChild(listElem);
                 outlineList.lastChild.appendChild(nestedList);
                 outlineList = nestedList;
-            }  else {
+            } else {
                 var levelUp = prevLevel - headLevel;
                 for (var i = 1; i <= levelUp; i++) {
                     outlineList = outlineList.parentNode.parentNode;
