@@ -72,5 +72,12 @@ function setupStyles() {
                         display: none; \
                     } \
                 }", 2);
-                
+            webButton.onclick = function() {
+                pageStyle.disabled = true;
+            }
+
+            pageButton.onclick = function() {
+                pageStyle.disabled = false;
+            };
+
 }
